@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/global_variables.dart';
-import 'package:shop_app/home_page.dart';
-import 'package:shop_app/product_details_page.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/providers/cart_provider.dart';
+import 'package:shop_app/pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +12,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ChangeNotifierProvider(
+      create: (context) => CartProvider(),
+      child: MaterialApp(
         title: 'shooping App',
         theme: ThemeData(
           fontFamily: 'Lato',
@@ -49,10 +51,8 @@ class MyApp extends StatelessWidget {
           ),
           useMaterial3: true,
         ),
-        home: const HomePage());
+        home: const HomePage(),
+      ),
+    );
   }
 }
-
-// ProductDetailsPage(
-//         product: products[0],
-//       ),
